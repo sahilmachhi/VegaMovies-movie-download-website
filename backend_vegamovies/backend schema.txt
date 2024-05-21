@@ -1,0 +1,83 @@
+vegamovies backend schema
+
+meta title(input) ==
+
+meta description(input) ==
+
+title(input) ==
+
+description(input) ==
+
+movie/series name(input) ==
+
+movie/series plot(input) ==
+
+posterURL(input) ==
+
+screenshots(input)(array)
+
+download Link(array) (object) {
+    -title(input)
+    -quality(input)
+    -Link(input)
+}
+
+release year(input) ==
+
+
+
+quality(checkbox) ==
+-480p ==
+-720p ==
+-1080p ==
+-2160p ==
+
+type(inputfield) ==
+-webseries ==
+-movie ==
+
+region(inputfield) ==
+-hollywood ==
+-bollywood ==
+-anime ==
+-kdrama ==
+-gujarati ==
+-south ==
+
+ott(inputfield) ==
+-netflix ==
+-amazon prime ==
+-hotstar ==
+-zee5 ==
+-sonyLIV ==
+-jio cinema ==
+-voot ==
+-hoichoi ==
+-discovery ==
+-altbalaji ==
+-mxPlayer ==
+-appletv+ ==
+-theaterPrint ==
+
+movie series category(checkbox) ==
+-action ==
+-adventure ==
+-animation ==
+-biography ==
+-comedy ==
+-crime ==
+-documentry ==
+-drama ==
+-family ==
+-Fantasy ==
+-history ==
+-horror ==
+-Mystery ==
+-music ==
+-romance ==
+-sci-fi ==
+-sport ==
+-suspense ==
+-thriller ==
+-war ==
+-short ==
