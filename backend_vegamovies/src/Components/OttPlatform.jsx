@@ -1,4 +1,5 @@
-const OttPlatform = () => {
+/* eslint-disable react/prop-types */
+const OttPlatform = ({ name, onChange }) => {
   const ott = [
     "netflix",
     "amazon prime",
@@ -20,7 +21,13 @@ const OttPlatform = () => {
       <div className="grid md:grid-cols-4 grid-cols-3 gap-3 ">
         {ott.map((ott, index) => (
           <div key={index} className="gap-2 flex">
-            <input type="radio" id={ott} name="ott-platform" value={ott} />
+            <input
+              type="radio"
+              id={ott}
+              value={ott}
+              onChange={onChange}
+              name={name}
+            />
             <label htmlFor={ott}>{ott}</label>
           </div>
         ))}

@@ -6,42 +6,73 @@ import Region from "./Components/Region";
 import Screenshots from "./Components/Screenshots";
 import Type from "./Components/Type";
 import { useState } from "react";
+import { useFormik } from "formik";
 
 const Form = () => {
-  const [ssinput, setSsinput] = useState([]);
-  const [LinkInput, SetLinkInput] = useState([]);
+  const [ssInputCount, setssInputCount] = useState([]);
+  const [linkInputCount, SetlinkInputCount] = useState([]);
 
   const addScreenShot = (e) => {
     e.preventDefault();
-    setSsinput([...ssinput, {}]);
+    setssInputCount([...ssInputCount, {}]);
   };
 
   const addLink = (e) => {
     e.preventDefault();
-    SetLinkInput([...LinkInput, {}]);
+    SetlinkInputCount([...linkInputCount, {}]);
   };
 
   const removeScreenShot = (e, index) => {
     e.preventDefault();
-    setSsinput(ssinput.filter((_, i) => i !== index));
+    setssInputCount(ssInputCount.filter((_, i) => i !== index));
   };
 
   const removeLink = (e, index) => {
+    console.log("function called");
     e.preventDefault();
-    SetLinkInput(LinkInput.filter((_, i) => i !== index));
+    SetlinkInputCount(linkInputCount.filter((_, i) => i !== index));
   };
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      metaTitle: "",
+      metaDes: "",
+      title: "",
+      description: "",
+      posterURL: "",
+      year: "",
+      plot: "",
+      ott: "",
+      region: "",
+      type: "",
+      genre: "",
+      quality: "",
+      screenshots: [],
+      links: [],
+    },
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
 
   return (
     <div className="flex flex-col gap-8 items-center justify-center w-full">
-      <form action="" className="md:w-2/4 w-4/5 flex flex-col gap-8">
+      <form
+        onSubmit={formik.handleSubmit}
+        className="md:w-2/4 w-4/5 flex flex-col gap-8"
+      >
         <div className="flex gap-4 flex-col">
           <label htmlFor="" className="text-xl font-bold">
             movie/series name
           </label>
           <input
             type="text"
+            name="name"
             className="border-2 border-black rounded-sm pl-4 py-2"
             placeholder="name"
+            onChange={formik.handleChange}
+            value={formik.values.name}
           />
         </div>
         <div className="flex gap-4 flex-col">
@@ -52,6 +83,9 @@ const Form = () => {
             type="text"
             className="border-2 border-black rounded-sm pl-4 py-2"
             placeholder="meta title"
+            name="metaTitle"
+            onChange={formik.handleChange}
+            value={formik.values.metaTitle}
           />
         </div>
         <div className="flex gap-4 flex-col">
@@ -62,6 +96,9 @@ const Form = () => {
             type="text"
             className="border-2 border-black rounded-sm pl-4 py-2"
             placeholder="meta description"
+            name="metaDes"
+            onChange={formik.handleChange}
+            value={formik.values.metaDes}
           />
         </div>
         <div className="flex gap-4 flex-col">
@@ -72,6 +109,9 @@ const Form = () => {
             type="text"
             className="border-2 border-black rounded-sm pl-4 py-2"
             placeholder="title"
+            name="title"
+            onChange={formik.handleChange}
+            value={formik.values.title}
           />
         </div>
         <div className="flex gap-4 flex-col">
@@ -82,6 +122,9 @@ const Form = () => {
             type="text"
             className="border-2 border-black rounded-sm pl-4 py-2"
             placeholder="description"
+            name="description"
+            onChange={formik.handleChange}
+            value={formik.values.description}
           />
         </div>
         <div className="flex gap-4 flex-col">
@@ -92,6 +135,9 @@ const Form = () => {
             type="text"
             className="border-2 border-black rounded-sm pl-4 py-2"
             placeholder="url"
+            name="posterURL"
+            onChange={formik.handleChange}
+            value={formik.values.posterURL}
           />
         </div>
         <div className="flex gap-4 flex-col">
@@ -102,6 +148,9 @@ const Form = () => {
             type="text"
             className="border-2 border-black rounded-sm pl-4 py-2"
             placeholder="year"
+            name="year"
+            onChange={formik.handleChange}
+            value={formik.values.year}
           />
         </div>
 
@@ -113,24 +162,30 @@ const Form = () => {
             type="text"
             className="border-2 border-black rounded-sm pl-4 py-2"
             placeholder="plot"
+            name="plot"
+            onChange={formik.handleChange}
+            value={formik.values.plot}
           />
 
-          <OttPlatform />
+          <OttPlatform name="ott" onChange={formik.handleChange} />
 
-          <Region />
+          <Region name="region" onChange={formik.handleChange} />
 
-          <Type />
+          <Type name="type" onChange={formik.handleChange} />
 
-          <GenreCheckbox />
+          <GenreCheckbox name="genre" onChange={formik.handleChange} />
 
-          <Quality />
+          <Quality name="quality" onChange={formik.handleChange} />
           <div className="flex gap-4 flex-col">
             <label htmlFor="screenshots" className="text-xl font-bold">
               Screenshots
             </label>
-            {ssinput.map((_, index) => (
+            {ssInputCount.map((_, index) => (
               <div key={index}>
-                <Screenshots />
+                <Screenshots
+                  onChange={formik.handleChange}
+                  name={`screenshots[${index}]`}
+                />
                 <button onClick={(e) => removeScreenShot(e, index)}>
                   delete
                 </button>
@@ -140,13 +195,13 @@ const Form = () => {
           </div>
 
           <div className="flex gap-4 flex-col">
-            <label htmlFor="screenshots" className="text-xl font-bold">
+            <label htmlFor="links" className="text-xl font-bold">
               Links
             </label>
-            {LinkInput.map((_, index) => (
+            {linkInputCount.map((_, index) => (
               <div key={index}>
-                <Link />
-                <button onClick={(index) => removeLink(index)}>
+                <Link formik={formik} index={index} />
+                <button onClick={(e) => removeLink(e, index)}>
                   remove this link
                 </button>
               </div>
@@ -154,6 +209,9 @@ const Form = () => {
             <button onClick={addLink}>add links</button>
           </div>
         </div>
+        <button className="bg-red-500 rounded-lg p-6" type="submit">
+          submit
+        </button>
       </form>
     </div>
   );

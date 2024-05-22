@@ -1,4 +1,5 @@
-const Quality = () => {
+/* eslint-disable react/prop-types */
+const Quality = ({ onChange, name }) => {
   const quality = ["480p", "720p", "1080p", "2160p"];
   return (
     <>
@@ -9,8 +10,9 @@ const Quality = () => {
             <input
               type="checkbox"
               id={quality}
-              name="quality"
+              name={name}
               value={quality}
+              onChange={onChange}
             />
             <label htmlFor={quality}>{quality}</label>
           </div>

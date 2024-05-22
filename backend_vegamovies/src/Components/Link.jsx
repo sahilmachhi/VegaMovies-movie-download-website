@@ -1,20 +1,45 @@
-const Link = () => {
-  const LinkDetail = ["title", "quality", "Link"];
+/* eslint-disable react/prop-types */
+
+const Link = ({ formik, index }) => {
   return (
     <>
-      <div className="flex flex-col ">
-        {LinkDetail.map((link, index) => (
-          <div className="flex gap-4 flex-col" key={index}>
-            <label htmlFor="" className="text-xl font-bold">
-              {link}
-            </label>
-            <input
-              type="text"
-              className="border-2 border-black rounded-sm pl-4 py-2"
-              placeholder={link}
-            />
-          </div>
-        ))}
+      <div className="flex flex-col">
+        <div className="flex gap-4 flex-col">
+          <label htmlFor="title" className="text-xl font-bold">
+            title
+          </label>
+          <input
+            type="text"
+            className="border-2 border-black rounded-sm pl-4 py-2"
+            placeholder="title"
+            name={`links[${index}].title`}
+            onChange={formik.handleChange}
+          />
+        </div>
+        <div className="flex gap-4 flex-col">
+          <label htmlFor="quality" className="text-xl font-bold">
+            quality
+          </label>
+          <input
+            type="text"
+            className="border-2 border-black rounded-sm pl-4 py-2"
+            placeholder="quality"
+            name={`links[${index}].quality`}
+            onChange={formik.handleChange}
+          />
+        </div>
+        <div className="flex gap-4 flex-col">
+          <label htmlFor="url" className="text-xl font-bold">
+            Link
+          </label>
+          <input
+            type="text"
+            className="border-2 border-black rounded-sm pl-4 py-2"
+            placeholder="Link"
+            name={`links[${index}].link`}
+            onChange={formik.handleChange}
+          />
+        </div>
       </div>
     </>
   );
