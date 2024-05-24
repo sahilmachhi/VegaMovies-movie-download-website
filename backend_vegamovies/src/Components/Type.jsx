@@ -22,6 +22,7 @@ const Type = ({ name, onChange }) => {
             value="web-series"
             name={name}
             onChange={onChange}
+            required
           />
           <label htmlFor="web-series">web-series</label>
         </div>

@@ -20,6 +20,7 @@ const Region = ({ name, onChange }) => {
               value={region}
               onChange={onChange}
               name={name}
+              required
             />
             <label htmlFor={region}>{region}</label>
           </div>

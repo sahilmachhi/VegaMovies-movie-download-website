@@ -14,6 +14,7 @@ const Link = ({ formik, index }) => {
             placeholder="title"
             name={`links[${index}].title`}
             onChange={formik.handleChange}
+            required
           />
         </div>
         <div className="flex gap-4 flex-col">
@@ -26,6 +27,7 @@ const Link = ({ formik, index }) => {
             placeholder="quality"
             name={`links[${index}].quality`}
             onChange={formik.handleChange}
+            required
           />
         </div>
         <div className="flex gap-4 flex-col">
@@ -38,6 +40,7 @@ const Link = ({ formik, index }) => {
             placeholder="Link"
             name={`links[${index}].link`}
             onChange={formik.handleChange}
+            required
           />
         </div>
       </div>

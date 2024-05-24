@@ -8,6 +8,7 @@ const Screenshots = ({ onChange, name }) => {
         placeholder="screenshot url"
         onChange={onChange}
         name={name}
+        required
       />
     </>
   );

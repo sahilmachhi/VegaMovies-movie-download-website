@@ -27,6 +27,7 @@ const OttPlatform = ({ name, onChange }) => {
               value={ott}
               onChange={onChange}
               name={name}
+              required
             />
             <label htmlFor={ott}>{ott}</label>
           </div>

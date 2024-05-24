@@ -7,6 +7,7 @@ import Screenshots from "./Components/Screenshots";
 import Type from "./Components/Type";
 import { useState } from "react";
 import { useFormik } from "formik";
+import supabase from "./supabase/supabase";
 
 const Form = () => {
   const [ssInputCount, setssInputCount] = useState([]);
@@ -17,6 +18,13 @@ const Form = () => {
     setssInputCount([...ssInputCount, {}]);
   };
 
+  const uploadData = async (movieData) => {
+    const { error } = await supabase.from("movielist").insert(movieData);
+    if (error) console.log(error);
+    else {
+      alert("movie upload successful");
+    }
+  };
   const addLink = (e) => {
     e.preventDefault();
     SetlinkInputCount([...linkInputCount, {}]);
@@ -52,7 +60,7 @@ const Form = () => {
       links: [],
     },
     onSubmit: (values) => {
-      console.log(values);
+      uploadData(values);
     },
   });
 
@@ -86,6 +94,7 @@ const Form = () => {
             name="metaTitle"
             onChange={formik.handleChange}
             value={formik.values.metaTitle}
+            required
           />
         </div>
         <div className="flex gap-4 flex-col">
@@ -99,6 +108,7 @@ const Form = () => {
             name="metaDes"
             onChange={formik.handleChange}
             value={formik.values.metaDes}
+            required
           />
         </div>
         <div className="flex gap-4 flex-col">
@@ -112,6 +122,7 @@ const Form = () => {
             name="title"
             onChange={formik.handleChange}
             value={formik.values.title}
+            required
           />
         </div>
         <div className="flex gap-4 flex-col">
@@ -125,6 +136,7 @@ const Form = () => {
             name="description"
             onChange={formik.handleChange}
             value={formik.values.description}
+            required
           />
         </div>
         <div className="flex gap-4 flex-col">
@@ -138,6 +150,7 @@ const Form = () => {
             name="posterURL"
             onChange={formik.handleChange}
             value={formik.values.posterURL}
+            required
           />
         </div>
         <div className="flex gap-4 flex-col">
@@ -151,6 +164,7 @@ const Form = () => {
             name="year"
             onChange={formik.handleChange}
             value={formik.values.year}
+            required
           />
         </div>
 
@@ -165,6 +179,7 @@ const Form = () => {
             name="plot"
             onChange={formik.handleChange}
             value={formik.values.plot}
+            required
           />
 
           <OttPlatform name="ott" onChange={formik.handleChange} />
