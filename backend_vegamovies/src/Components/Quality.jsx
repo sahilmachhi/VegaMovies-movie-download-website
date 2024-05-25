@@ -13,7 +13,6 @@ const Quality = ({ onChange, name }) => {
               name={name}
               value={quality}
               onChange={onChange}
-              required
             />
             <label htmlFor={quality}>{quality}</label>
           </div>

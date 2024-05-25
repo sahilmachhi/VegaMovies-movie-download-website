@@ -17,19 +17,7 @@ const Link = ({ formik, index }) => {
             required
           />
         </div>
-        <div className="flex gap-4 flex-col">
-          <label htmlFor="quality" className="text-xl font-bold">
-            quality
-          </label>
-          <input
-            type="text"
-            className="border-2 border-black rounded-sm pl-4 py-2"
-            placeholder="quality"
-            name={`links[${index}].quality`}
-            onChange={formik.handleChange}
-            required
-          />
-        </div>
+
         <div className="flex gap-4 flex-col">
           <label htmlFor="url" className="text-xl font-bold">
             Link

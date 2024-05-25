@@ -36,7 +36,6 @@ function GenreCheckbox({ onChange, name }) {
               name={name}
               value={genre}
               onChange={onChange}
-              required
             />
             <label htmlFor={genre}>{genre}</label>
           </div>

@@ -5,17 +5,31 @@ import Link from "next/link";
 import { FaSearch } from "react-icons/fa";
 import { IoIosMenu } from "react-icons/io";
 import Sidebar from "./Sidebar";
+import { useState } from "react";
+import MobileSearch from "./MobileSearch";
 
 const Header = () => {
-  const handleSidebarClose = () => {
-    console.log("Sidebar closed!");
-    // Perform any additional actions in the parent component as needed
+  const [hidden, setHidden] = useState("none");
+  const [search, setSearch] = useState("none");
+  const sidebarClose = () => {
+    if (hidden === "none") {
+      setHidden("block");
+    } else {
+      setHidden("none");
+    }
+  };
+
+  const handleSearchbar = () => {
+    if (search === "none") {
+      setSearch("block");
+    } else {
+      setSearch("none");
+    }
   };
   return (
     <>
       <div className="flex flex-col">
-        <Sidebar onSidebarClose={handleSidebarClose} />
-
+        <Sidebar hidden={hidden} sidebarClose={sidebarClose} />
         <div
           className="lg:block hidden flex-wrap  box-border text-[rgb(196,196,196)] bg-[rgb(17,17,17)]"
           style={{
@@ -77,13 +91,14 @@ const Header = () => {
           <div className="lg:flex hidden items-center justify-center">
             <input
               type="text"
-              className=" bg-[rgb(39,47,46)] text-white block relative max-w-none w-full h-full"
+              placeholder="search here"
+              className="pl-4 bg-[rgb(39,47,46)] text-white block relative max-w-none w-full h-full"
             />
             <FaSearch className="size-8 mx-3" />
           </div>
 
           <div className="lg:hidden relative flex items-center">
-            <IoIosMenu className="size-8 mx-3" onClick={handleSidebarClose} />
+            <IoIosMenu className="size-8 mx-3" onClick={sidebarClose} />
           </div>
           <div className="lg:hidden relative h-auto w-full flex justify-center items-center ">
             <Image
@@ -95,10 +110,11 @@ const Header = () => {
           </div>
 
           <div className="lg:hidden relative flex items-center">
-            <FaSearch className="size-8 mx-3" />
+            <FaSearch className="size-8 mx-3" onClick={handleSearchbar} />
           </div>
         </div>
       </div>
+      {search === "block" ? <MobileSearch /> : null}
     </>
   );
 };

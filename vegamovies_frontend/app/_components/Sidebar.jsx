@@ -1,16 +1,7 @@
 "use client";
-import React, { useState } from "react";
+
 import Link from "next/link";
-const Sidebar = () => {
-  const [hidden, setHidden] = useState("none");
-  const sidebarClose = ({ onSidebarClose }) => {
-    if (hidden === "none") {
-      setHidden("block");
-    } else {
-      setHidden("none");
-    }
-    onSidebarClose();
-  };
+const Sidebar = ({ hidden, sidebarClose }) => {
   return (
     <>
       <div
