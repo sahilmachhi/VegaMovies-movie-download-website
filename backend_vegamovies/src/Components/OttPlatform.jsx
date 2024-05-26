@@ -2,7 +2,7 @@
 const OttPlatform = ({ name, onChange }) => {
   const ott = [
     "netflix",
-    "amazon prime",
+    "amazon-prime",
     "hotstar",
     "zee5",
     "sonyLIV",
@@ -14,6 +14,7 @@ const OttPlatform = ({ name, onChange }) => {
     "mxPlayer",
     "appletv+",
     "theaterPrint",
+    "others",
   ];
   return (
     <>

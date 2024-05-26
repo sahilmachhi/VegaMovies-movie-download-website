@@ -8,11 +8,11 @@ const Navigation = () => {
     },
     {
       text: "web series",
-      link: "/region/web-series",
+      link: "/type/web-series",
     },
     {
       text: "movie",
-      link: "/region/movie",
+      link: "/type/movie",
     },
     {
       text: "480p",
@@ -33,6 +33,10 @@ const Navigation = () => {
     {
       text: "netflix",
       link: "/ott/netflix",
+    },
+    {
+      text: "amazon prime",
+      link: "/ott/amazon-prime",
     },
     {
       text: "disney+ hotstar",

@@ -3,10 +3,11 @@ import { supabase } from "@/supabase/supabase";
 import MovieCard from "@/app/_components/MovieCard";
 
 const page = async ({ params: { slug } }) => {
+  const searchQuery = decodeURI(slug);
   const { data, error } = await supabase
     .from("movielist")
     .select()
-    .eq("region", slug);
+    .ilike("name", `%${searchQuery}%`);
   if (data) console.log(data);
   else {
     console.log(error);

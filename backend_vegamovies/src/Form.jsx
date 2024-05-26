@@ -43,6 +43,7 @@ const Form = () => {
 
   const formik = useFormik({
     initialValues: {
+      url: "",
       name: "",
       metaTitle: "",
       metaDes: "",
@@ -70,6 +71,19 @@ const Form = () => {
         onSubmit={formik.handleSubmit}
         className="md:w-2/4 w-4/5 flex flex-col gap-8"
       >
+        <div className="flex gap-4 flex-col">
+          <label htmlFor="" className="text-xl font-bold">
+            URL
+          </label>
+          <input
+            type="text"
+            name="url"
+            className="border-2 border-black rounded-sm pl-4 py-2"
+            placeholder="url"
+            onChange={formik.handleChange}
+            value={formik.values.url}
+          />
+        </div>
         <div className="flex gap-4 flex-col">
           <label htmlFor="" className="text-xl font-bold">
             movie/series name

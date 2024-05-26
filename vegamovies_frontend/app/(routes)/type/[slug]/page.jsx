@@ -6,7 +6,7 @@ const page = async ({ params: { slug } }) => {
   const { data, error } = await supabase
     .from("movielist")
     .select()
-    .eq("region", slug);
+    .eq("type", slug);
   if (data) console.log(data);
   else {
     console.log(error);

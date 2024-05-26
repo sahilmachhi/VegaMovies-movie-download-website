@@ -7,10 +7,18 @@ import { IoIosMenu } from "react-icons/io";
 import Sidebar from "./Sidebar";
 import { useState } from "react";
 import MobileSearch from "./MobileSearch";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
+  const route = useRouter();
   const [hidden, setHidden] = useState("none");
   const [search, setSearch] = useState("none");
+  const [searchInput, setSearchInput] = useState("");
+
+  const handleSearch = (query) => {
+    route.push(`/search/${query}`);
+  };
+
   const sidebarClose = () => {
     if (hidden === "none") {
       setHidden("block");
@@ -37,13 +45,15 @@ const Header = () => {
             backgroundColor: "rgb(17, 17, 17)",
           }}
         >
-          <Image
-            src="/vegamovies logo.png"
-            alt="logo"
-            width={500}
-            height={200}
-            className="max-h-[100px] max-w-full block h-auto text-transparent box-border "
-          ></Image>
+          <Link href={"/"}>
+            <Image
+              src="/vegamovies logo.png"
+              alt="logo"
+              width={500}
+              height={200}
+              className="max-h-[100px] max-w-full block h-auto text-transparent box-border "
+            ></Image>
+          </Link>
         </div>
         <div
           className="flex justify-between item-center box-border text-[rgb(196,196,196)] bg-[rgb(43,52,51)] h-[50px]"
@@ -61,21 +71,21 @@ const Header = () => {
             </Link>
 
             <Link
-              href={"/"}
+              href={"/bollywood"}
               className="text-white text-[14px] text-center flex item-center self-center  line-clamp-7 px-[14px] uppercase"
             >
               bollywood movies
             </Link>
 
             <Link
-              href={"/"}
+              href={"/south-indian-movies"}
               className="text-white text-[14px] text-center flex item-center self-center  line-clamp-7 px-[14px] uppercase"
             >
               south hindi dubbed
             </Link>
 
             <Link
-              href={"/"}
+              href={"/hollywood"}
               className="text-white text-[14px] text-center flex item-center self-center line-clamp-7 px-[14px] uppercase"
             >
               dual audio
@@ -92,25 +102,35 @@ const Header = () => {
             <input
               type="text"
               placeholder="search here"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
               className="pl-4 bg-[rgb(39,47,46)] text-white block relative max-w-none w-full h-full"
             />
-            <FaSearch className="size-8 mx-3" />
+            <FaSearch
+              className="size-8 mx-3 cursor-pointer"
+              onClick={() => handleSearch(searchInput)}
+            />
           </div>
 
           <div className="lg:hidden relative flex items-center">
             <IoIosMenu className="size-8 mx-3" onClick={sidebarClose} />
           </div>
           <div className="lg:hidden relative h-auto w-full flex justify-center items-center ">
-            <Image
-              src="/vegamovies logo.png"
-              alt="logo"
-              fill={true}
-              className="object-contain"
-            ></Image>
+            <Link href={"/"}>
+              <Image
+                src="/vegamovies logo.png"
+                alt="logo"
+                fill={true}
+                className="object-contain"
+              ></Image>
+            </Link>
           </div>
 
           <div className="lg:hidden relative flex items-center">
-            <FaSearch className="size-8 mx-3" onClick={handleSearchbar} />
+            <FaSearch
+              className="size-8 mx-3"
+              onClick={() => handleSearchbar(searchInput)}
+            />
           </div>
         </div>
       </div>
