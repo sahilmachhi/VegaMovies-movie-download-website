@@ -8,6 +8,7 @@ import Sidebar from "./Sidebar";
 import { useState } from "react";
 import MobileSearch from "./MobileSearch";
 import { useRouter } from "next/navigation";
+import Genre from "./Genre";
 
 const Header = () => {
   const route = useRouter();
@@ -16,7 +17,14 @@ const Header = () => {
   const [searchInput, setSearchInput] = useState("");
 
   const handleSearch = (query) => {
-    route.push(`/search/${query}`);
+    if (query) route.push(`/search/${query}`);
+    else alert("please write something");
+  };
+
+  const handleKeyDown = (event, query) => {
+    if (event.key === "Enter") {
+      handleSearch(query);
+    }
   };
 
   const sidebarClose = () => {
@@ -62,41 +70,41 @@ const Header = () => {
             backgroundColor: "rgb(43, 52, 51)",
           }}
         >
-          <div className="lg:flex hidden  h-[50px]">
+          <div className="lg:flex hidden items-center justify-center h-full">
             <Link
               href={"/"}
-              className="text-white text-[14px] text-center flex item-center self-center px-[14px] line-clamp-7 uppercase"
+              className="text-white text-[14px] text-center flex  self-center px-[14px] line-clamp-7 uppercase h-full items-center"
             >
               home
             </Link>
 
             <Link
               href={"/bollywood"}
-              className="text-white text-[14px] text-center flex item-center self-center  line-clamp-7 px-[14px] uppercase"
+              className="text-white text-[14px] text-center flex items-center self-center  line-clamp-7 px-[14px] uppercase h-full"
             >
               bollywood movies
             </Link>
 
             <Link
               href={"/south-indian-movies"}
-              className="text-white text-[14px] text-center flex item-center self-center  line-clamp-7 px-[14px] uppercase"
+              className="text-white text-[14px] text-center flex items-center self-center  line-clamp-7 px-[14px] uppercase h-full"
             >
               south hindi dubbed
             </Link>
 
             <Link
               href={"/hollywood"}
-              className="text-white text-[14px] text-center flex item-center self-center line-clamp-7 px-[14px] uppercase"
+              className="text-white text-[14px] text-center flex items-center h-full self-center line-clamp-7 px-[14px] uppercase"
             >
               dual audio
             </Link>
 
-            <Link
-              href={"/"}
-              className="text-white text-[14px] text-center flex item-center self-center  line-clamp-7 px-[14px] uppercase"
-            >
-              Genre
-            </Link>
+            <div className="flex item-center self-center relative genre-hover h-full">
+              <div className="text-white text-[14px] text-center flex items-center self-center  line-clamp-7 px-[14px] uppercase relative cursor-pointer  h-full">
+                Genre
+              </div>
+              <Genre />
+            </div>
           </div>
           <div className="lg:flex hidden items-center justify-center">
             <input
@@ -104,6 +112,7 @@ const Header = () => {
               placeholder="search here"
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
+              onKeyDown={(e) => handleKeyDown(e, searchInput)}
               className="pl-4 bg-[rgb(39,47,46)] text-white block relative max-w-none w-full h-full"
             />
             <FaSearch
@@ -134,7 +143,13 @@ const Header = () => {
           </div>
         </div>
       </div>
-      {search === "block" ? <MobileSearch /> : null}
+      {search === "block" ? (
+        <MobileSearch
+          onClick={() => handleSearch(searchInput)}
+          setSearchInput={setSearchInput}
+          searchInput={searchInput}
+        />
+      ) : null}
     </>
   );
 };

@@ -6,7 +6,8 @@ const page = async ({ params: { slug } }) => {
   const { data, error } = await supabase
     .from("movielist")
     .select()
-    .contains("quality", [slug]);
+    .contains("quality", [slug])
+    .order("created_at", { ascending: false });
   if (data) console.log(data);
   else {
     console.log(error);

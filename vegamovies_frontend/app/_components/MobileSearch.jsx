@@ -1,5 +1,5 @@
 import { FaSearch } from "react-icons/fa";
-const MobileSearch = ({ search }) => {
+const MobileSearch = ({ search, onClick, searchInput, setSearchInput }) => {
   return (
     <>
       <div
@@ -10,8 +10,10 @@ const MobileSearch = ({ search }) => {
           type="text"
           placeholder="search here"
           className="text-black w-full h-full pl-4"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
         />
-        <FaSearch className="size-8 mx-3" />
+        <FaSearch className="size-8 mx-3" onClick={onClick} />
       </div>
     </>
   );

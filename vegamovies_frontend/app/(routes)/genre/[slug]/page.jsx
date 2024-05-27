@@ -1,12 +1,16 @@
 import React from "react";
 import { supabase } from "@/supabase/supabase";
 import MovieCard from "@/app/_components/MovieCard";
-const page = async () => {
+
+const page = async ({ params: { slug } }) => {
   const { data, error } = await supabase
     .from("movielist")
     .select()
-    .eq("region", "bollywood")
-    .order("created_at", { ascending: false });
+    .contains("genre", [slug]);
+  if (error) {
+    console.log(error);
+    return <h1>error fetching data</h1>;
+  }
   return (
     <>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 gap-y-10 mt-16 items-start">
