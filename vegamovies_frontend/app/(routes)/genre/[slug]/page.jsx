@@ -10,6 +10,8 @@ const page = async ({ params: { slug } }) => {
   if (error) {
     console.log(error);
     return <h1>error fetching data</h1>;
+  } else {
+    console.log(data);
   }
   return (
     <>

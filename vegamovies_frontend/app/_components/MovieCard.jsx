@@ -18,8 +18,17 @@ const MovieCard = ({ data }) => {
         href={`/${data.url}`}
         className="w-full flex flex-col gap-8 justify-center text-center items-center hover:text-red-500 "
       >
-        <div className="h-[250px] w-[168px] relative flex items-center justify-center">
-          <img src={data.posterURL} className="object-cover" alt="poster url" />
+        <div
+          className="h-[250px] w-[168px] relative flex items-center justify-center "
+          style={{
+            background: "linear-gradient(to right, #ca4747, #f4c922)",
+          }}
+        >
+          <img
+            src={data.posterURL}
+            className="object-cover p-[3px]"
+            alt="poster url"
+          />
         </div>
 
         <div>

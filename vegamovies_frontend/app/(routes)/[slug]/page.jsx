@@ -26,7 +26,7 @@ const page = async ({ params: { slug } }) => {
     ).padStart(2, "0")}-${localYear}`;
     return (
       <>
-        <div className="flex flex-col lg:mx-20">
+        <div className="flex flex-col lg:mx-20 mx-10">
           <div className="border-b-2 pb-[36px]">
             <h1 className="font-bold text-[30px] leading-[1.35] tracking-[0px] no-underline box-border mx-0 my-[0.67em]">
               {data[0].title}

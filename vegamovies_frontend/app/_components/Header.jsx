@@ -44,33 +44,38 @@ const Header = () => {
   };
   return (
     <>
-      <div className="flex flex-col">
+      <div className="flex flex-col px-0 w-full mx-0">
         <Sidebar hidden={hidden} sidebarClose={sidebarClose} />
         <div
-          className="lg:block hidden flex-wrap  box-border text-[rgb(196,196,196)] bg-[rgb(17,17,17)]"
+          className="lg:block hidden flex-wrap  box-border text-[rgb(196,196,196)] bg-[rgb(17,17,17)] "
           style={{
             color: "rgb(196, 196, 196)",
             backgroundColor: "rgb(17, 17, 17)",
           }}
         >
           <Link href={"/"}>
-            <Image
-              src="/vegamovies logo.png"
-              alt="logo"
-              width={500}
-              height={200}
-              className="max-h-[100px] max-w-full block h-auto text-transparent box-border "
-            ></Image>
+            <div className="relative h-[64px] w-[350px] my-[19px] ml-[20px]">
+              <Image
+                src="/vegamovies logo.png"
+                alt="logo"
+                fill={true}
+                className="max-h-[100px] max-w-full block h-auto text-transparent box-border "
+              ></Image>
+            </div>
           </Link>
         </div>
         <div
-          className="flex justify-between item-center box-border text-[rgb(196,196,196)] bg-[rgb(43,52,51)] h-[50px]"
+          className="flex justify-between item-center box-border text-[#ffffff] bg-[#191919] h-[50px] px-0 w-full mx-0"
           style={{
             color: "rgb(196, 196, 196)",
             backgroundColor: "rgb(43, 52, 51)",
           }}
         >
-          <div className="lg:flex hidden items-center justify-center h-full">
+          <div
+            className="lg:flex hidden items-center
+           justify-center h-full
+            "
+          >
             <Link
               href={"/"}
               className="text-white text-[14px] text-center flex  self-center px-[14px] line-clamp-7 uppercase h-full items-center"
@@ -126,12 +131,14 @@ const Header = () => {
           </div>
           <div className="lg:hidden relative h-auto w-full flex justify-center items-center ">
             <Link href={"/"}>
-              <Image
-                src="/vegamovies logo.png"
-                alt="logo"
-                fill={true}
-                className="object-contain"
-              ></Image>
+              <div className=" relative w-[247px] h-[33px]">
+                <Image
+                  src="/vegamovies logo mobile.png"
+                  alt="logo"
+                  fill={true}
+                  className="object-contain"
+                ></Image>
+              </div>
             </Link>
           </div>
 
@@ -150,6 +157,16 @@ const Header = () => {
           searchInput={searchInput}
         />
       ) : null}
+      <div className="mt-[25px]">
+        <input
+          type="text"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+          onKeyDown={(e) => handleKeyDown(e, searchInput)}
+          className="text-[14px] leading-[25.2px] overflow-visible box-border appearance-none bg-[rgba(0,0,0,0)] text-[rgb(153,153,153)] block font-normal tracking-[normal] w-full mt-0 mb-[10px] mx-0 pt-[11px] pb-[10px] px-[20px] border-2 border-solid border-[rgba(255,255,255,0.1)]"
+          placeholder="Search Movies or WEB-Series Here..."
+        />
+      </div>
     </>
   );
 };
