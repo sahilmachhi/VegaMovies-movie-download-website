@@ -48,9 +48,9 @@ const Sidebar = ({ hidden, sidebarClose }) => {
             </Link>
 
             <div>
-              <div className="text-white text-[26px] font-bold text-center  line-clamp-7 uppercase ">
+              {/* <div className="text-white text-[26px] font-bold text-center  line-clamp-7 uppercase ">
                 Genre
-              </div>
+              </div> */}
               {/* <Genre /> */}
             </div>
           </div>

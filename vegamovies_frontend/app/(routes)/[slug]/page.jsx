@@ -59,7 +59,13 @@ const page = async ({ params: { slug } }) => {
               <h3 className="text-center text-[#eef425] text-[26px]">
                 Movie-SYNOPSIS/PLOT:
               </h3>
-              <p>{data[0].plot}</p>
+              <div className="flex flex-col gap-10">
+                {Array.isArray(data[0].plot) ? (
+                  data[0]?.plot.map((plot, index) => <p key={index}>{plot}</p>)
+                ) : (
+                  <p>plot is not found</p>
+                )}
+              </div>
             </div>
             <div className="flex flex-col mt-14 gap-6 mb-8">
               <h3 className="text-center text-[#eef425] text-[26px]">

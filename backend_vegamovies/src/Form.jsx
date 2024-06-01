@@ -12,10 +12,19 @@ import supabase from "./supabase/supabase";
 const Form = () => {
   const [ssInputCount, setssInputCount] = useState([]);
   const [linkInputCount, SetlinkInputCount] = useState([]);
-
+  const [plotCount, setplotCount] = useState([]);
   const addScreenShot = (e) => {
     e.preventDefault();
     setssInputCount([...ssInputCount, {}]);
+  };
+
+  const addDes = (e) => {
+    e.preventDefault();
+    setplotCount([...plotCount, {}]);
+  };
+  const removeDes = (e, index) => {
+    e.preventDefault();
+    setplotCount(plotCount.filter((_, i) => i !== index));
   };
 
   const uploadData = async (movieData) => {
@@ -51,7 +60,7 @@ const Form = () => {
       description: "",
       posterURL: "",
       year: "",
-      plot: "",
+      plot: [],
       ott: "",
       region: "",
       type: "",
@@ -66,11 +75,25 @@ const Form = () => {
   });
 
   return (
-    <div className="flex flex-col gap-8 items-center justify-center w-full">
+    <div className="flex flex-col gap-8 items-center justify-center w-full pb-14">
       <form
         onSubmit={formik.handleSubmit}
         className="md:w-2/4 w-4/5 flex flex-col gap-8"
       >
+        <div className="flex gap-4 flex-col">
+          <label htmlFor="" className="text-xl font-bold">
+            poster url
+          </label>
+          <input
+            type="text"
+            className="border-2 border-black rounded-sm pl-4 py-2"
+            placeholder="url"
+            name="posterURL"
+            onChange={formik.handleChange}
+            value={formik.values.posterURL}
+            required
+          />
+        </div>
         <div className="flex gap-4 flex-col">
           <label htmlFor="" className="text-xl font-bold">
             URL
@@ -139,6 +162,7 @@ const Form = () => {
             required
           />
         </div>
+
         <div className="flex gap-4 flex-col">
           <label htmlFor="" className="text-xl font-bold">
             description
@@ -153,20 +177,7 @@ const Form = () => {
             required
           />
         </div>
-        <div className="flex gap-4 flex-col">
-          <label htmlFor="" className="text-xl font-bold">
-            poster url
-          </label>
-          <input
-            type="text"
-            className="border-2 border-black rounded-sm pl-4 py-2"
-            placeholder="url"
-            name="posterURL"
-            onChange={formik.handleChange}
-            value={formik.values.posterURL}
-            required
-          />
-        </div>
+
         <div className="flex gap-4 flex-col">
           <label htmlFor="" className="text-xl font-bold">
             release year
@@ -183,18 +194,30 @@ const Form = () => {
         </div>
 
         <div className="flex gap-4 flex-col">
-          <label htmlFor="" className="text-xl font-bold">
-            movie/series plot
-          </label>
-          <input
-            type="text"
-            className="border-2 border-black rounded-sm pl-4 py-2"
-            placeholder="plot"
-            name="plot"
-            onChange={formik.handleChange}
-            value={formik.values.plot}
-            required
-          />
+          {plotCount.map((_, index) => (
+            <div key={index} className="flex gap-4 flex-col">
+              <label htmlFor="" className="text-xl font-bold">
+                movie/series plot
+              </label>
+              <input
+                type="text"
+                className="border-2 border-black rounded-sm pl-4 py-2"
+                placeholder="plot"
+                name={`plot[${index}]`}
+                onChange={formik.handleChange}
+                required
+              />
+              <button
+                onClick={(e) => removeDes(e, index)}
+                className="bg-red-500 px-6 py-3"
+              >
+                delete
+              </button>
+            </div>
+          ))}
+          <button onClick={addDes} className="bg-green-500 py-6">
+            add Plot paragraph
+          </button>
 
           <OttPlatform name="ott" onChange={formik.handleChange} />
 
@@ -210,17 +233,22 @@ const Form = () => {
               Screenshots
             </label>
             {ssInputCount.map((_, index) => (
-              <div key={index}>
+              <div key={index} className="flex gap-4">
                 <Screenshots
                   onChange={formik.handleChange}
                   name={`screenshots[${index}]`}
                 />
-                <button onClick={(e) => removeScreenShot(e, index)}>
+                <button
+                  className="bg-red-500 px-6 py-3"
+                  onClick={(e) => removeScreenShot(e, index)}
+                >
                   delete
                 </button>
               </div>
             ))}
-            <button onClick={addScreenShot}>Add Screenshot</button>
+            <button onClick={addScreenShot} className="bg-green-500 py-6">
+              Add Screenshot
+            </button>
           </div>
 
           <div className="flex gap-4 flex-col">
@@ -228,17 +256,22 @@ const Form = () => {
               Links
             </label>
             {linkInputCount.map((_, index) => (
-              <div key={index}>
+              <div key={index} className="flex gap-4">
                 <Link formik={formik} index={index} />
-                <button onClick={(e) => removeLink(e, index)}>
+                <button
+                  onClick={(e) => removeLink(e, index)}
+                  className="bg-red-500 px-6 py-3"
+                >
                   remove this link
                 </button>
               </div>
             ))}
-            <button onClick={addLink}>add links</button>
+            <button onClick={addLink} className="bg-green-500 py-6">
+              add links
+            </button>
           </div>
         </div>
-        <button className="bg-red-500 rounded-lg p-6" type="submit">
+        <button className="bg-blue-500 rounded-lg p-6" type="submit">
           submit
         </button>
       </form>

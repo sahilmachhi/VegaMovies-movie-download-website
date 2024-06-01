@@ -1,6 +1,6 @@
 import { supabase } from "@/supabase/supabase";
 import MovieCard from "./_components/MovieCard";
-export const revalidate = 0;
+export const revalidate = 600;
 const Home = async () => {
   const { data, error } = await supabase
     .from("movielist")

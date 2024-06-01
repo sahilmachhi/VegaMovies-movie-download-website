@@ -121,7 +121,7 @@ const Header = () => {
               className="pl-4 bg-[rgb(39,47,46)] text-white block relative max-w-none w-full h-full"
             />
             <FaSearch
-              className="size-8 mx-3 cursor-pointer"
+              className="size-6 mx-3 cursor-pointer"
               onClick={() => handleSearch(searchInput)}
             />
           </div>
@@ -144,7 +144,7 @@ const Header = () => {
 
           <div className="lg:hidden relative flex items-center">
             <FaSearch
-              className="size-8 mx-3"
+              className="size-6 mx-3"
               onClick={() => handleSearchbar(searchInput)}
             />
           </div>
