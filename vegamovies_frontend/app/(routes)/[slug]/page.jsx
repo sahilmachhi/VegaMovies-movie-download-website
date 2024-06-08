@@ -17,6 +17,7 @@ const page = async ({ params: { slug } }) => {
       </>
     );
   } else {
+    console.log(data);
     const localDate = new Date(data[0].created_at);
     const localYear = localDate.getFullYear();
     const localMonth = localDate.getMonth() + 1;
