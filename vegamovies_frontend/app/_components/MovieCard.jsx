@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+
 const MovieCard = ({ data }) => {
   const localDate = new Date(data.created_at);
 

@@ -1,6 +1,24 @@
 import React from "react";
 import { supabase } from "@/supabase/supabase";
 import { MdDateRange } from "react-icons/md";
+export async function generateStaticParams() {
+  const { data, error } = await supabase.from("movielist").select();
+
+  return data?.map((data) => {
+    slug: data.url;
+  });
+}
+export async function generateMetadata({ params: { slug } }) {
+  const url = decodeURI(slug);
+  const { data, error } = await supabase
+    .from("movielist")
+    .select()
+    .eq("url", url);
+  return {
+    title: data[0].metaTitle,
+    description: data[0].metaDes,
+  };
+}
 
 const page = async ({ params: { slug } }) => {
   const url = decodeURI(slug);
@@ -17,7 +35,6 @@ const page = async ({ params: { slug } }) => {
       </>
     );
   } else {
-    console.log(data);
     const localDate = new Date(data[0].created_at);
     const localYear = localDate.getFullYear();
     const localMonth = localDate.getMonth() + 1;
