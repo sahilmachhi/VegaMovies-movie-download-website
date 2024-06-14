@@ -5,12 +5,9 @@ export default async function sitemap() {
         .select()
         .order("created_at", { ascending: false });
 
-    const movieURL = data.map((url) => url.url)
-    const movieEntries = movieURL.map((movieLink) => {
-        url: `${process.env.NEXT_PUBLIC_URL}/${movieLink}`
-        console.log(url)
-
-    })
+    const movieEntries = data.map((movie) => ({
+        url: `${process.env.NEXT_PUBLIC_URL}/${movie.url}`, // Use movie.url directly
+    }));
 
     return [
         {
