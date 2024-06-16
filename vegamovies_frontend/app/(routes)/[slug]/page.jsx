@@ -14,6 +14,7 @@ export async function generateMetadata({ params: { slug } }) {
     .from("movielist")
     .select()
     .eq("url", url);
+    console.log('data is here', data)
   return {
     title: data[0].metaTitle,
     description: data[0].metaDes,

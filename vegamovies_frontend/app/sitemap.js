@@ -11,7 +11,8 @@ export default async function sitemap() {
 
     return [
         {
-            url: `${process.env.NEXT_PUBLIC_URL}/bollywood`
+            url: `${process.env.NEXT_PUBLIC_URL}/bollywood`,
+            lastModified: new Date(),
         },
         ...movieEntries
     ]
