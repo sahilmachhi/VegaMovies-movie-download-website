@@ -6,11 +6,11 @@ import { Provider } from "./provider";
 export const metadata = {
   title: {
     default:
-      "Vegamovies - Download Bollywood, Hollywood,Movies and Web Series 4K",
+      "Vegamovies | Download Bollywood And South Indian Hindi Dubbed Movies For Free , 9xmovies, Katmoviehd,Filmyzilla",
     template: "%s - vegamovies",
   },
   description:
-    "Vegamovies Is Offering An Extensive Array Of Movies And Web Series To Download Free, You Will Get The Latest Netflix,Hollywood, Bollywood, South Indian Dubbed, Web-series And Many More Movies and Series In High Quality",
+    "Download Latest Bollywood ,South India Hindi Dubbed and Hollywood Movies Free, 9xmovies, 300MB Movies | Filmycloud | Tamilrockers | 1TamilMv | DesireMovies | KatmovieHD | khatrimazaful",
   icons: {
     icon: "/icon.png",
   },

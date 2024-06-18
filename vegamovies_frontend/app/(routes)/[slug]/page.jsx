@@ -59,9 +59,9 @@ const page = async ({ params: { slug } }) => {
             <p className="text-[rgb(196,196,196)] pb-5">
               {data[0].description}
             </p>
-            <h3 className="text-center text-[#eef425] text-[16px] font-bold leading-[1.35]">
+            <h2 className="text-center text-[#eef425] text-[16px] font-bold leading-[1.35]">
               {data[0].title}
-            </h3>
+            </h2>
             <h3 className="text-[#eef425] text-[26px] font-semibold mb-[8px]">
               Movie Info:
             </h3>

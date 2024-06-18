@@ -14,12 +14,13 @@ const MovieCard = ({ data }) => {
 
   return (
     <>
-      <Link
+     <article id={data.id}>
+     <Link
         href={`/${data.url}`}
         className="w-full flex flex-col gap-8 justify-center text-center items-center hover:text-red-500 "
       >
         <div
-          className=" relative p-1 flex items-center justify-center "
+          className="relative p-1 flex items-center justify-center article-image"
           style={{
             background: "linear-gradient(to right, #ca4747, #f4c922)",
           }}
@@ -32,10 +33,11 @@ const MovieCard = ({ data }) => {
         </div>
 
         <div>
-          <h1>{date}</h1>
-          <h1>{data.title}</h1>
+          <h3>{date}</h3>
+          <h2 className="entry-title" itemProp="headline">{data.title}</h2>
         </div>
       </Link>
+     </article>
     </>
   );
 };
