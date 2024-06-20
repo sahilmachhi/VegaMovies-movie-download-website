@@ -44,7 +44,7 @@ const Header = () => {
   };
   return (
     <>
-      <div className="flex flex-col px-0 w-full mx-0">
+      <header className="flex flex-col px-0 w-full mx-0">
         <Sidebar hidden={hidden} sidebarClose={sidebarClose} />
         <div
           className="lg:block hidden flex-wrap  box-border text-[rgb(196,196,196)] bg-[rgb(17,17,17)] "
@@ -149,7 +149,7 @@ const Header = () => {
             />
           </div>
         </div>
-      </div>
+      </header>
       {search === "block" ? (
         <MobileSearch
           onClick={() => handleSearch(searchInput)}
