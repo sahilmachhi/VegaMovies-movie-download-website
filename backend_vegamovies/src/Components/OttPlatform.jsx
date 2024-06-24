@@ -6,7 +6,7 @@ const OttPlatform = ({ name, onChange }) => {
     "hotstar",
     "zee5",
     "sonyLIV",
-    "jio cinema",
+    "jio-cinema",
     "voot",
     "hoichoi",
     "discovery",

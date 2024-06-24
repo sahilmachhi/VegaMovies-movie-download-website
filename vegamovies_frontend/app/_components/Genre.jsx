@@ -44,4 +44,4 @@ const Genre = () => {
 };
 
 export default Genre;
-export {genres};
+
