@@ -2,11 +2,40 @@ import React from "react";
 import { supabase } from "@/supabase/supabase";
 import MovieCard from "@/app/_components/MovieCard";
 export const revalidate = 0;
-const page = async () => {
+const page = async ({searchParams}) => {
+
+  const { count } = await supabase
+  .from('movielist')
+  .select('id', { count: 'exact' })
+  .eq('region', 'south');
+
+
+const numberOfPages = Math.ceil(count / 20);
+console.log(numberOfPages)
+
+
+if (searchParams.page === undefined) {
+  searchParams.page = 1
+  console.log(searchParams)
+}
+
+let page  = searchParams.page
+const itemsPerPage = 20;
+function movielist(page) {
+const from = (page - 1) * itemsPerPage;
+const to = from + itemsPerPage - 1;
+return {from, to}
+}
+const { from, to } = movielist(page, itemsPerPage);
+
+
+
+
   const { data, error } = await supabase
     .from("movielist")
     .select()
     .eq("region", "south")
+    .range(from,to)
     .order("created_at", { ascending: false });
   return (
     <>
