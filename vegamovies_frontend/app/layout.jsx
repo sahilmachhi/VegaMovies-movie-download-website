@@ -6,11 +6,11 @@ import { Provider } from "./provider";
 export const metadata = {
   title: {
     default:
-      "Vegamovies | Download Bollywood And South Indian Hindi Dubbed Movies For Free , 9xmovies, Katmoviehd,Filmyzilla",
+      "Vegamovies: Free Bollywood, South Indian, and Hindi Dubbed Movies | 9xmovies, KatmovieHD",
     template: "%s - vegamovies",
   },
   description:
-    "Download Latest Bollywood ,South India Hindi Dubbed and Hollywood Movies Free, 9xmovies, 300MB Movies | Filmycloud | Tamilrockers | 1TamilMv | DesireMovies | KatmovieHD | khatrimazaful",
+    "Download the latest Bollywood, South Indian, Hindi Dubbed, and Hollywood movies for free. Explore 9xmovies, 300MB Movies, Filmycloud, Tamilrockers, 1TamilMv, DesireMovies, KatmovieHD, and khatrimazaful",
   icons: {
     icon: "/icon.png",
   },
