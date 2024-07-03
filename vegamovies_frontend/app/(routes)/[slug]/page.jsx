@@ -1,6 +1,9 @@
 import React from "react";
 import { supabase } from "@/supabase/supabase";
 import { MdDateRange } from "react-icons/md";
+import Download from "@/app/_components/Download";
+import Image from "next/image";
+import Script from "next/script";
 export async function generateStaticParams() {
   const { data, error } = await supabase.from("movielist").select();
 
@@ -14,10 +17,24 @@ export async function generateMetadata({ params: { slug } }) {
     .from("movielist")
     .select()
     .eq("url", url);
-    console.log('data is here', data)
+  console.log("data is here", data);
   return {
-    title: data[0].metaTitle,
-    description: data[0].metaDes,
+    title: `Watch ${data[0].name} free from Vegamovies`,
+    description: `download ${data[0].name} for free in 480p,720p,1080p and 4K and hindi dubbed in vegamovies | filmyzila | hdmovies`,
+    creator: "vegamovies",
+    publisher: "vegamovies",
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_URL}/${data[0].url}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: false,
+      },
+    },
   };
 }
 
@@ -55,13 +72,33 @@ const page = async ({ params: { slug } }) => {
               <p>{date}</p>
             </div>
           </div>
+          <Script
+            async="async"
+            data-cfasync="false"
+            src="//pl23680765.highrevenuenetwork.com/6f915dd292b11b2a5319217d38b48bea/invoke.js"
+          ></Script>
+          <div id="container-6f915dd292b11b2a5319217d38b48bea"></div>
           <div className="flex flex-col mt-[40px] mb-[8px]">
             <p className="text-[rgb(196,196,196)] pb-5">
               {data[0].description}
             </p>
-            <h2 className="text-center text-[#eef425] text-[16px] font-bold leading-[1.35]">
+            <h2 className="text-center text-[#eef425] text-[32px] font-bold leading-[1.35]">
               {data[0].title}
             </h2>
+            <h3 className="mt-5 mb-10">
+              Vegamovies is the best online platform for downloading 1080p and
+              4K Bollywood, Hollywood Movies in hindi dubbed [DVDRip] [BRRip],
+              720p Bollywood, Hollywood Movies [DVDRip] [BRRip], Bollywood,
+              Hollywood Movies [300MB], Crime, Drama, Mystery. We provide direct
+              G-Drive download link for fast and secure downloading. Click on
+              the download button below and follow the steps to start download.
+            </h3>
+            <Script
+              async="async"
+              data-cfasync="false"
+              src="//pl23680765.highrevenuenetwork.com/6f915dd292b11b2a5319217d38b48bea/invoke.js"
+            ></Script>
+            <div id="container-6f915dd292b11b2a5319217d38b48bea"></div>
             <h3 className="text-[#eef425] text-[26px] font-semibold mb-[8px]">
               Movie Info:
             </h3>
@@ -74,18 +111,34 @@ const page = async ({ params: { slug } }) => {
               <strong>Genre: {data[0].genre.map((g) => `${g}, `)}</strong>
               <strong>Quality: {data[0].quality.map((q) => `${q}, `)}</strong>
             </div>
+            <Script
+              async="async"
+              data-cfasync="false"
+              src="//pl23680765.highrevenuenetwork.com/6f915dd292b11b2a5319217d38b48bea/invoke.js"
+            ></Script>
+            <div id="container-6f915dd292b11b2a5319217d38b48bea"></div>
             <div className="flex flex-col mt-14 gap-6">
               <h3 className="text-center text-[#eef425] text-[26px]">
                 Movie-SYNOPSIS/PLOT:
               </h3>
               <div className="flex flex-col gap-10">
                 {Array.isArray(data[0].plot) ? (
-                  data[0]?.plot.map((plot, index) => <p key={index}>{plot}</p>)
+                  data[0]?.plot.map((plot, index) => (
+                    <>
+                      <p key={index}>{plot}</p>
+                    </>
+                  ))
                 ) : (
                   <p>plot is not found</p>
                 )}
               </div>
             </div>
+            <Script
+              async="async"
+              data-cfasync="false"
+              src="//pl23680765.highrevenuenetwork.com/6f915dd292b11b2a5319217d38b48bea/invoke.js"
+            ></Script>
+            <div id="container-6f915dd292b11b2a5319217d38b48bea"></div>
             <div className="flex flex-col mt-14 gap-6 mb-8">
               <h3 className="text-center text-[#eef425] text-[26px]">
                 ScreenShots:
@@ -94,43 +147,60 @@ const page = async ({ params: { slug } }) => {
                 {data[0]?.screenshots.lenght < 1
                   ? "no screenshots"
                   : data[0].screenshots.map((s, index) => (
-                      <div key={index}>
-                        <img src={s} alt="screenshots" />
+                      <div key={index} className="relative w-full h-auto">
+                        <Image
+                          src={s}
+                          alt="screenshots"
+                          width={558}
+                          height={313}
+                          // className="w-[558px] h-[313px]"
+                          // className="w-full h-full top-0 left-0 object-cover rounded-2xl"
+                          style={{
+                            objectFit: "contain",
+                            width: "100%",
+                            position: "relative",
+                            height: "unset",
+                          }}
+                        />
                       </div>
                     ))}
               </div>
             </div>
+            <Script
+              async="async"
+              data-cfasync="false"
+              src="//pl23680765.highrevenuenetwork.com/6f915dd292b11b2a5319217d38b48bea/invoke.js"
+            ></Script>
+            <div id="container-6f915dd292b11b2a5319217d38b48bea"></div>
             <div className="flex flex-col border-b-2 border-t-2 border-white py-16">
               <h3 className="text-center text-[#eef425] text-[26px] ">
                 download links:
               </h3>
+              <p className="text-[24px] text-center text-red-500">
+                note: <br></br>
+                <span className="text-white mb-2">
+                  Always try to use Filepress Link
+                </span>
+              </p>
               <div className="flex flex-col items-center justify-center gap-[36px] pt-4">
                 {data[0].links.map((link, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col item-center justify-center text-center gap-[20px]"
-                  >
-                    <h3
-                      className="text-[18px] font-semibold
-                    "
-                    >
-                      {link.title}
-                    </h3>
-                    <a href={link.link} target="_blank">
-                      <button
-                        className="text-white relative z-0 min-w-[160px] shadow-[rgb(255,255,255)_0px_5px_14px_-7px] text-[100%] leading-[24.3px] overflow-visible align-top inline-block cursor-pointer text-center transition-[color] duration-[0.3s] ease-[ease] delay-[0s,background-color,border-color,opacity,visibility] font-bold tracking-[0px] no-underline box-border m-[4px] px-[20px] py-[12px] rounded-none border-[none]"
-                        style={{
-                          background:
-                            "linear-gradient(135deg, rgba(103, 223, 3, 0.72), rgba(19, 86, 213, 0.72)) 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0)",
-                        }}
-                      >
-                        Download Now
-                      </button>
-                    </a>
-                  </div>
+                  <Download key={index} link={link} />
                 ))}
+                <p className="text-[24px] text-center text-red-500">
+                  note: <br></br>
+                  <span className="text-white mb-2">
+                    click on download button 3-4 times to get download link
+                    thank you
+                  </span>
+                </p>
               </div>
             </div>
+            <Script
+              async="async"
+              data-cfasync="false"
+              src="//pl23680765.highrevenuenetwork.com/6f915dd292b11b2a5319217d38b48bea/invoke.js"
+            ></Script>
+            <div id="container-6f915dd292b11b2a5319217d38b48bea"></div>
             <div className="flex flex-col py-16 gap-10">
               <h3 className="text-center text-[#eef425] text-[26px]">
                 Winding Up ❤️

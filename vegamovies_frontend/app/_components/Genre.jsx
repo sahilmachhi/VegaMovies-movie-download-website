@@ -32,7 +32,7 @@ const Genre = () => {
         {genres.map((g, i) => (
           <Link
             key={i}
-            href={`/genre/${g}`}
+            href={`${process.env.NEXT_PUBLIC_URL}/genre/${g}`}
             className="p-[15px] left-0 genre hover:text-red-600 cursor-pointer"
           >
             {g}
@@ -44,4 +44,3 @@ const Genre = () => {
 };
 
 export default Genre;
-

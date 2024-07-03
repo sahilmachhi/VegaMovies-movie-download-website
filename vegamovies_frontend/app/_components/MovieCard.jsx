@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const MovieCard = ({ data }) => {
   const localDate = new Date(data.created_at);
@@ -14,30 +15,35 @@ const MovieCard = ({ data }) => {
 
   return (
     <>
-     <article id={data.id}>
-     <Link
-        href={`/${data.url}`}
-        className="w-full flex flex-col gap-8 justify-center text-center items-center hover:text-red-500 "
-      >
-        <div
-          className="relative p-1 flex items-center justify-center article-image"
-          style={{
-            background: "linear-gradient(to right, #ca4747, #f4c922)",
-          }}
+      <article id={data.id}>
+        <Link
+          href={`/${data.url}`}
+          title={`${data.title}`}
+          className="w-full flex flex-col gap-8 justify-center text-center items-center hover:text-red-500 "
         >
-          <img
-            src={data.posterURL}
-            className="h-[250px] w-[168px] object-cover"
-            alt="poster url"
-          />
-        </div>
+          <div
+            className="relative p-1 flex items-center justify-center article-image"
+            style={{
+              background: "linear-gradient(to right, #ca4747, #f4c922)",
+            }}
+          >
+            <Image
+              src={data.posterURL}
+              width={168}
+              height={250}
+              className="h-[250px] w-[168px] object-cover"
+              alt="poster url"
+            />
+          </div>
 
-        <div>
-          <h3>{date}</h3>
-          <h2 className="entry-title" itemProp="headline">{data.title}</h2>
-        </div>
-      </Link>
-     </article>
+          <div>
+            <h3>{date}</h3>
+            <h2 className="entry-title" itemProp="headline">
+              {data.title}
+            </h2>
+          </div>
+        </Link>
+      </article>
     </>
   );
 };

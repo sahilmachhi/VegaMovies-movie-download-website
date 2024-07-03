@@ -1,5 +1,5 @@
 import { supabase } from "@/supabase/supabase";
-
+export const revalidate = 0
 const genres = [
     "action",
     "adventure",
@@ -67,6 +67,10 @@ export default async function sitemap() {
     return [
         {
             url: `${process.env.NEXT_PUBLIC_URL}`,
+            lastModified: new Date(),
+        },
+        {
+            url: `${process.env.NEXT_PUBLIC_URL}/dmca`,
             lastModified: new Date(),
         },
         {

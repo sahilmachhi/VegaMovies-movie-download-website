@@ -1,6 +1,8 @@
 import React from "react";
 import Header from "./_components/Header";
 import Navigation from "./_components/Navigation";
+import Footer from "./_components/Footer";
+import Script from "next/script";
 export const Provider = ({ children }) => {
   return (
     <>
@@ -11,16 +13,25 @@ export const Provider = ({ children }) => {
             className=" bg-[#191919]"
           >
             <section>
-            <Header />
+              <Header />
             </section>
+            <Script
+              async="async"
+              data-cfasync="false"
+              src="//pl23680765.highrevenuenetwork.com/6f915dd292b11b2a5319217d38b48bea/invoke.js"
+            ></Script>
+            <div id="container-6f915dd292b11b2a5319217d38b48bea"></div>
             <section>
-            <Navigation />
+              <Navigation />
             </section>
-            <section>{children}</section>
-            <section className="flex flex-col text-center mt-10 gap-8 mx-10">
-            <h1 className="text-2xl"><em>Vegamovies4u.cc, vegamovies.mex.com, vegamovies.vg, Vegamovies nl, Vegamovies Netflix, Vegamovies in, Vegamovies.com, Vegamovies Hdhub4u, Vegamovies 2.0, Vegamovies.</em></h1>
-            <p className="text-lg"><strong className="text-red-600">Disclaimer:</strong> Our website does not host any files on its servers. All files available for download on Vegamovies are hosted by third-party servers and provided by external sources over which we have no control. We do not endorse or promote any specific content available for download.</p>
-            </section>
+            <script
+              async="async"
+              data-cfasync="false"
+              src="//pl23680765.highrevenuenetwork.com/6f915dd292b11b2a5319217d38b48bea/invoke.js"
+            ></script>
+            <div id="container-6f915dd292b11b2a5319217d38b48bea"></div>
+            {children}
+            <Footer />
           </div>
         </div>
       </main>

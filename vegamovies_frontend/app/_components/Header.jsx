@@ -53,7 +53,7 @@ const Header = () => {
             backgroundColor: "rgb(17, 17, 17)",
           }}
         >
-          <Link href={"/"}>
+          <Link href={`${process.env.NEXT_PUBLIC_URL}`}>
             <div className="relative h-[64px] w-[350px] my-[19px] ml-[20px]">
               <Image
                 src="/vegamovies logo.png"
@@ -77,28 +77,28 @@ const Header = () => {
             "
           >
             <Link
-              href={"/"}
+              href={`${process.env.NEXT_PUBLIC_URL}`}
               className="text-white text-[14px] text-center flex  self-center px-[14px] line-clamp-7 uppercase h-full items-center"
             >
               home
             </Link>
 
             <Link
-              href={"/bollywood"}
+              href={`${process.env.NEXT_PUBLIC_URL}/bollywood`}
               className="text-white text-[14px] text-center flex items-center self-center  line-clamp-7 px-[14px] uppercase h-full"
             >
               bollywood movies
             </Link>
 
             <Link
-              href={"/south-indian-movies"}
+              href={`${process.env.NEXT_PUBLIC_URL}/south-indian-movies`}
               className="text-white text-[14px] text-center flex items-center self-center  line-clamp-7 px-[14px] uppercase h-full"
             >
               south hindi dubbed
             </Link>
 
             <Link
-              href={"/hollywood"}
+              href={`${process.env.NEXT_PUBLIC_URL}/hollywood`}
               className="text-white text-[14px] text-center flex items-center h-full self-center line-clamp-7 px-[14px] uppercase"
             >
               dual audio
